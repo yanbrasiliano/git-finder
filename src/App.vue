@@ -4,10 +4,22 @@ import Github from './components/Github.vue';
 </script>
 
 <template>
-	<Github />
+	<Github>
+		<h1>Git Finder &#128269; </h1>
+
+
+		<template v-slot:footer>
+			<footer>
+				Developed by <a href="https://github.com/yanbrasiliano" target="_blank" class="foot">
+					Yan Brasiliano &#129417;
+				</a>
+			</footer>
+		</template>
+	</Github>
+
 </template>
 
-<style >
+<style>
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -18,7 +30,15 @@ body {
 	background-color: #1c1a1d;
 	color: #e5e5e5;
 }
+.foot{
+	text-decoration: none;
+}
 
+footer{
+	margin-top: 3rem;
+	height: 2rem;
+	padding: 2rem;	
+}
 #app {
 	font-family: 'Ubuntu', sans-serif;
 	min-height: 100vh;
@@ -26,6 +46,4 @@ body {
 	margin: 0 auto;
 	text-align: center;
 }
-
-
 </style>

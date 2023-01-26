@@ -13,11 +13,11 @@ const state = reactive({
 	company: '.',
 	avatar_url: '',
 	repo: [],
-	
+
 })
 
 async function fetchGithubUser(username) {
-	
+
 
 	const res = await fetch(`https://api.github.com/users/${username}`)
 	const { login, name, bio, company, avatar_url } = await res.json()
@@ -51,10 +51,13 @@ const reposCountMessage = computed(() => {
 
 <template>
 
-	<h1>Git Finder</h1>
-	<p> User: {{ state.searchInput }} </p>
 
-	<Form @formSubmit ="fetchGithubUser" v-model="state.searchInput"/>
+	<slot></slot>
+	<!--
+		<p> User: {{ state.searchInput }} </p>
+	-->
+
+	<Form @formSubmit="fetchGithubUser" v-model="state.searchInput" />
 	<User v-if="state.login !== ''" :login="state.login" :name="state.name" :company="state.company" :bio="state.bio"
 		:avatar_url="state.avatar_url" />
 
@@ -66,10 +69,20 @@ const reposCountMessage = computed(() => {
 		</article>
 	</section>
 
+	<slot name="footer"></slot>
 </template>
 
 
-<style >
+<style>
+h1 {
+	margin: 2rem auto 2rem 1rem;
+	font-size: 6rem;
+}
+
+p {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
 
 a {
 	color: #f64348;

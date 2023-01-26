@@ -33,6 +33,8 @@ button {
 }
 
 input {
+
+	width: 100%;
 	background-color: #1c1a1d;
 	border: 1px solid #e91219;
 	border-radius: .25rem;

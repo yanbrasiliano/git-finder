@@ -1,22 +1,14 @@
 <script setup>
-import Github from './components/Github.vue';
+
 
 </script>
 
 <template>
-	<Github>
-		<h1>Git Finder &#128269; </h1>
-
-
-		<template v-slot:footer>
-			<footer>
-				Developed by <a href="https://github.com/yanbrasiliano" target="_blank" class="foot">
-					Yan Brasiliano &#129417;
-				</a>
-			</footer>
-		</template>
-	</Github>
-
+	<nav>
+		<RouterLink to="/">Home</RouterLink>
+		<RouterLink to="/search">Search User</RouterLink>
+	</nav>
+	<RouterView></RouterView>
 </template>
 
 <style>
@@ -30,20 +22,55 @@ body {
 	background-color: #1c1a1d;
 	color: #e5e5e5;
 }
-.foot{
+
+.foot {
 	text-decoration: none;
 }
 
-footer{
+footer {
 	margin-top: 3rem;
 	height: 2rem;
-	padding: 2rem;	
+	padding: 2rem;
 }
+
 #app {
 	font-family: 'Ubuntu', sans-serif;
 	min-height: 100vh;
 	max-width: 40rem;
 	margin: 0 auto;
 	text-align: center;
+}
+
+h1 {
+	color: #f64348;
+	margin: 1rem auto;
+}
+
+footer {
+	height: 3rem;
+	margin-top: 2rem;
+	padding: 1rem 0;
+}
+
+a {
+	color: #f64348;
+	font-weight: 600;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+a+a {
+	margin-left: 1rem;
+}
+
+a:hover {
+	cursor: pointer;
+	filter: brightness(0.9);
+}
+
+nav {
+	border-bottom: 1px solid #fff;
+	padding: 1rem 0;
+	margin-bottom: 1rem;
 }
 </style>

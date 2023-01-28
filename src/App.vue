@@ -42,7 +42,7 @@ footer {
 }
 
 h1 {
-	color: #f64348;
+	color: #e9d0d1;
 	margin: 1rem auto;
 }
 
@@ -66,9 +66,11 @@ a+a {
 a:hover {
 	cursor: pointer;
 	filter: brightness(0.9);
+	color: #e9d0d1;
 }
 
 nav {
+	font-size: 1.5rem;
 	border-bottom: 1px solid #fff;
 	padding: 1rem 0;
 	margin-bottom: 1rem;

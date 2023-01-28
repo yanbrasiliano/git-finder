@@ -1,15 +1,20 @@
 <script setup>
-import { ref,reactive } from 'vue';
+import { ref, reactive } from 'vue';
+import { userSearchHistoryStore } from '../store/userHistorySearchHistory.js';
+
 const emit = defineEmits(['formSubmit']);
 
 const searchInput = ref('')
+const searchHistory = userSearchHistoryStore();
 
 function handleSubmit(e) {
 	e.preventDefault();
+	searchHistory.pushToHistory(searchInput.value);
 	emit('formSubmit', searchInput.value)
-
 }
-
+function showSearchHistory() {
+	alert(`History Search:\n${searchHistory.users.join('\n')}`)
+}
 
 const state = reactive({
 	btn: 'Search'
@@ -20,7 +25,9 @@ const state = reactive({
 <template>
 	<form @submit="handleSubmit">
 		<input type="text" v-model="searchInput">
-		<button type="button" @click="fetchGithubUser">{{ state.btn }}</button>
+		<button type="submit" @click="fetchGithubUser">{{ state.btn }}</button>
+		<button type="button" @click="showSearchHistory">History</button>
+
 	</form>
 </template>
 
@@ -49,6 +56,7 @@ button {
 	color: #1c1a1d;
 	font-size: 1rem;
 	font-weight: 700;
+	margin-left: 1rem;
 	text-transform: uppercase;
 }
 
